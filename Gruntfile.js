@@ -16,18 +16,32 @@ module.exports = function(grunt) {
       'build': {
         files: {
           'dist/xapiwrapper.min.js': [
-            'lib/cryptojs_v3.1.2.js',
-            'src/verbs.js',
-            'src/xapiwrapper.js',
-            'src/xapistatement.js',
-            'src/xapi-util.js',
-            'src/xapi-launch.js'
+            'src/index.js'    // Everything is included from here
+            // 'lib/cryptojs_v3.1.2.js',
+            // 'src/verbs.js',
+            // 'src/xapiwrapper.js',
+            // 'src/xapistatement.js',
+            // 'src/xapi-util.js',
+            // 'src/xapi-launch.js'
           ]
         }
       }
     },
     'exec': {
       docs: './node_modules/doxstrap/bin/doxstrap.js --source "src/xapiwrapper.js:src/xapistatement.js" --title "xAPIWrapper <%= pkg.version %> Reference" --layout "bs-sidebar.html" --no-sort --output doc'
+    },
+    'webpack': {
+      xapiwrapper: {
+        entry: "./src/index.js",
+        output: {
+          path: "dist/",
+          filename: "xapiwrapper.min.js"
+        }
+      }
+    },
+    watch: {
+      files: ['src/*.js'],
+      tasks: ['webpack'],
     }
   });
 
@@ -37,13 +51,17 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-exec');
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify']);//,'exec']);
+  grunt.registerTask('default', ['webpack']);//,'exec']);
 
   // Build only
-  grunt.registerTask('build', ['uglify']);
+  grunt.registerTask('build', ['webpack']);
 
   // Docs only
   grunt.registerTask('docs', ['exec']);
+
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-webpack');
+
 
   // those with adl repo access can use this to publish a tag and release
   // $> grunt release:minor

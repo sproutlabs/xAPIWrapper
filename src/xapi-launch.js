@@ -1,5 +1,4 @@
-(function(obj){
-var ADL = obj;
+
 function getQueryVariable(variable)
 {
     var query = window.location.search.substring(1);
@@ -164,5 +163,4 @@ function xAPILaunch(cb, terminate_on_unload)
         cb(e);
     }
 };
-ADL.launch = xAPILaunch;
-})(window.ADL = window.ADL || {});
+

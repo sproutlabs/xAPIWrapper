@@ -1,5 +1,4 @@
-(function(ADL){
-   ADL.verbs = {
+module.exports = {
       "abandoned" : {
          "id" : "https://w3id.org/xapi/adl/verbs/abandoned",
          "display" : {"en-US" : "abandoned"}
@@ -188,4 +187,3 @@
          "display" : {"en-US" : "waived"}
       }
    };
-}(window.ADL = window.ADL || {}));

@@ -15,7 +15,7 @@ describe('testing xAPI utilities', function () {
             stmts = ADL.stmts;
         }
         else {
-            util = require('../../src/xapi-util').xapiutil;
+            util = require('../../src/').xapiutil;
             should = require('should');
             stmts = require('../../examples/stmtBank.js').stmts;
         }
@@ -38,7 +38,7 @@ describe('testing xAPI utilities', function () {
         //tests relies on environment settings being 'en-US'
         //failing this test does not necessarily mean that the code is bad, change "en-US" to match your proper environment setting
         it('should get the language from the browser or node', function () {
-            (util.getLang()).should.eql("en-US");
+            (util.getLang()).should.eql("en-US"); 
         });
     });
 
