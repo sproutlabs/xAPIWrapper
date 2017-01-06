@@ -9,7 +9,8 @@
   "main": "./src/",
   "scripts": {
     "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha --  -R spec test/tests/*",
-    "build-watch": "node_modules/.bin/grunt watch"
+    "build-watch": "node_modules/.bin/grunt watch",
+    "build": "node_modules/.bin/grunt build"
   },
   "devDependencies": {
     "blanket": "^1.2.3",
