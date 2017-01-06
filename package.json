@@ -1,19 +1,18 @@
 {
   "name": "xAPIWrapper",
   "description": "An easier way to build, send, and retrieve xAPI statements",
-  "version": "1.11.0",
+  "version": "1.11.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/adlnet/xAPIWrapper.git"
   },
-  "main": "./dist/xapiwrapper.min.js",
+  "main": "./src/",
   "scripts": {
     "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha --  -R spec test/tests/*",
     "build-watch": "node_modules/.bin/grunt watch"
   },
   "devDependencies": {
     "blanket": "^1.2.3",
-    "cryptojs": "^2.5.3",
     "doxstrap": "~0.0.5",
     "grunt": "~0.4.2",
     "grunt-bump": "0.0.16",
@@ -26,5 +25,9 @@
     "webpack": "^1.13.2",
     "mocha": "^3.0.2",
     "should": "^11.1.0"
+  },
+  "dependencies": {
+    "crypto-js": "^3.1.6",
+    "merge": "^1.2.0"
   }
 }

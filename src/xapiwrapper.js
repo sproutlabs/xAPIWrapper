@@ -1,7 +1,7 @@
 "use strict";
 
 var CryptoJS = require('crypto-js');
-
+var mergeRecursive = require('merge');
 // adds toISOString to date objects if not there
 // from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
 if (!Date.prototype.toISOString) {
@@ -971,36 +971,6 @@ var XAPIWrapper = function (config, verifyxapiversion) {
         catch (e) {
             return false;
         }
-    }
-
-// merges two object
-    function mergeRecursive(obj1, obj2) {
-        for (var p in obj2) {
-            prop = obj2[p];
-            log(p + " : " + prop);
-            try {
-                // Property in destination object set; update its value.
-                if (obj2[p].constructor == Object) {
-                    obj1[p] = mergeRecursive(obj1[p], obj2[p]);
-
-                }
-                else {
-                    if (obj1 == undefined) {
-                        obj1 = new Object();
-                    }
-                    obj1[p] = obj2[p];
-                }
-            }
-            catch (e) {
-                if (obj1 == undefined) {
-                    obj1 = new Object();
-                }
-                // Property in destination object not set; create it and set its value.
-                obj1[p] = obj2[p];
-            }
-        }
-
-        return obj1;
     }
 
 // iniitializes an lrs object with settings from
